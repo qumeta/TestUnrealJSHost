@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <init>
+    <log text="AndroidNative -> Adding properties to Manifest and Gradle"/>
+    <trace enable="true"/>
+    
+    <setBool result="bSupported" value="false"/>
+
+    <isArch arch="armeabi-v7a">
+      <setBool result="bSupported" value="true"/>
+    </isArch>
+
+    <isArch arch="arm64-v8a">
+      <setBool result="bSupported" value="true"/>
+    </isArch>
+
+    <if condition="bSupported">
+      <false>
+        <log text="WARNING: this architecture is not supported!"/>
+      </false>
+    </if>
+
+  </init>
+
+  <prebuildCopies>
+    <!--<copyDir src="$S(PluginDir)/Demo" dst="$S(BuildDir)/assets" />-->
+  </prebuildCopies>
+
+</root>
